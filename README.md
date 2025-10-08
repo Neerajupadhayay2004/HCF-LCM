@@ -1,73 +1,108 @@
-# Welcome to your Lovable project
+Got it ✅
+You want to replace all Lovable-related info from that README and make it fully your own project version (hosted on Netlify: https://hcf-lcm.netlify.app/), including your GitHub link, while keeping the instructions professional and clear.
 
-## Project info
+Here’s your clean, personalized README.md 👇
 
-**URL**: https://lovable.dev/projects/9464726f-331c-4800-a813-ad051a25065d
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+🧮 HCF & LCM Calculator
 
-**Use Lovable**
+A simple and interactive web application to calculate the Highest Common Factor (HCF) and Least Common Multiple (LCM) of two or more numbers instantly.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/9464726f-331c-4800-a813-ad051a25065d) and start prompting.
+🌐 Live Demo
 
-Changes made via Lovable will be committed automatically to this repo.
+👉 https://hcf-lcm.netlify.app/
 
-**Use your preferred IDE**
+📦 Project Information
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+This project is built using Vite, React, TypeScript, Tailwind CSS, and Shadcn UI for a smooth, modern UI experience.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+🧠 Features
 
-Follow these steps:
+Calculate HCF & LCM for multiple numbers
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Fast, accurate, and responsive UI
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Minimal and elegant design
 
-# Step 3: Install the necessary dependencies.
-npm i
+Deployed on Netlify for instant access
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+
+
+---
+
+⚙️ How to Run the Project Locally
+
+Follow these steps to run the app on your local system:
+
+# Step 1: Clone the repository
+git clone https://github.com/Neerajupadhayay2004/hcf-lcm-calculator.git
+
+# Step 2: Navigate into the project folder
+cd hcf-lcm-calculator
+
+# Step 3: Install dependencies
+npm install
+
+# Step 4: Start the development server
 npm run dev
-```
 
-**Edit a file directly in GitHub**
+Then, open the local server URL shown in the terminal (usually http://localhost:5173) in your browser.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
 
-**Use GitHub Codespaces**
+---
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+🛠️ Built With
 
-## What technologies are used for this project?
+⚡ Vite – Next-gen frontend tooling
 
-This project is built with:
+⚛️ React + TypeScript – Modern component-based development
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+🎨 Tailwind CSS – For fast, responsive styling
 
-## How can I deploy this project?
+🧩 Shadcn UI – Reusable, beautiful UI components
 
-Simply open [Lovable](https://lovable.dev/projects/9464726f-331c-4800-a813-ad051a25065d) and click on Share -> Publish.
 
-## Can I connect a custom domain to my Lovable project?
 
-Yes, you can!
+---
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+🚀 Deployment
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+This project is deployed on Netlify.
+To deploy updates:
+
+1. Commit and push changes to your GitHub repository.
+
+
+2. Netlify will automatically detect changes and redeploy.
+
+
+
+
+---
+
+🌍 Custom Domain
+
+You can connect a custom domain using Netlify Domain Settings.
+Go to Netlify Dashboard → Site Settings → Domain Management → Add custom domain.
+
+
+---
+
+👨‍💻 Author
+
+Neeraj Upadhayay
+
+🌐 GitHub Profile
+
+🎓 B.Tech (Cybersecurity), IILM University
+
+💼 Full-Stack Developer | Cybersecurity Enthusiast
+
+
+
+---
+
+Would you like me to include a preview screenshot section (with an image placeholder) in the README too? That gives it a professional look for GitHub and Netlify pages.
+
