@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { QuizQuestion } from "@/components/QuizQuestion";
 import { ResultsScreen } from "@/components/ResultsScreen";
+import { AddQuestionForm } from "@/components/AddQuestionForm";
 import { Button } from "@/components/ui/button";
 
 const QUESTIONS = [
@@ -156,11 +157,29 @@ const QUESTIONS = [
   },
 ];
 
+interface Question {
+  id: number;
+  numerator1: number;
+  denominator1: number;
+  numerator2: number;
+  denominator2: number;
+  operation: "+" | "-";
+  correctNumerator: number;
+  correctDenominator: number;
+}
+
 const Index = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showResults, setShowResults] = useState(false);
   const [started, setStarted] = useState(false);
+  const [showAddQuestion, setShowAddQuestion] = useState(false);
+  const [customQuestions, setCustomQuestions] = useState<Question[]>([]);
+  const [useCustomQuestions, setUseCustomQuestions] = useState(false);
+
+  const activeQuestions = useCustomQuestions && customQuestions.length > 0 
+    ? customQuestions 
+    : QUESTIONS;
 
   const handleAnswer = (correct: boolean) => {
     if (correct) {
@@ -181,15 +200,65 @@ const Index = () => {
     setScore(0);
     setShowResults(false);
     setStarted(false);
+    setShowAddQuestion(false);
+  };
+
+  const handleAddQuestion = (question: Question) => {
+    setCustomQuestions([...customQuestions, question]);
+  };
+
+  const handleRemoveQuestion = (id: number) => {
+    setCustomQuestions(customQuestions.filter(q => q.id !== id));
+  };
+
+  const handleStartQuiz = (useCustom: boolean) => {
+    if (useCustom && customQuestions.length === 0) {
+      return;
+    }
+    setUseCustomQuestions(useCustom);
+    setStarted(true);
+    setShowAddQuestion(false);
   };
 
   if (showResults) {
     return (
       <ResultsScreen
         score={score}
-        totalQuestions={QUESTIONS.length}
+        totalQuestions={activeQuestions.length}
         onRestart={handleRestart}
       />
+    );
+  }
+
+  if (showAddQuestion) {
+    return (
+      <div className="min-h-screen bg-background py-12">
+        <div className="max-w-4xl mx-auto mb-6 px-6">
+          <Button
+            variant="outline"
+            onClick={() => setShowAddQuestion(false)}
+            className="mb-4"
+          >
+            ← Back
+          </Button>
+        </div>
+        <AddQuestionForm
+          onAddQuestion={handleAddQuestion}
+          customQuestions={customQuestions}
+          onRemoveQuestion={handleRemoveQuestion}
+        />
+        {customQuestions.length > 0 && (
+          <div className="max-w-4xl mx-auto px-6 mt-6">
+            <Button
+              onClick={() => handleStartQuiz(true)}
+              size="lg"
+              className="w-full rounded-full bg-accent hover:bg-accent/90"
+            >
+              Start Quiz with My Questions ({customQuestions.length} questions)
+            </Button>
+          </div>
+        )}
+      </div>
     );
   }
 
@@ -228,13 +297,35 @@ const Index = () => {
             </div>
           </div>
 
-          <Button
-            onClick={() => setStarted(true)}
-            size="lg"
-            className="rounded-full bg-accent hover:bg-accent/90 text-xl px-12 py-6 h-auto"
-          >
-            Start Learning! 🚀
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              onClick={() => handleStartQuiz(false)}
+              size="lg"
+              className="rounded-full bg-primary hover:bg-primary/90 text-lg px-8 py-6 h-auto"
+            >
+              Start with Default Questions
+            </Button>
+            <Button
+              onClick={() => setShowAddQuestion(true)}
+              size="lg"
+              variant="outline"
+              className="rounded-full text-lg px-8 py-6 h-auto border-2"
+            >
+              Create My Own Questions ✏️
+            </Button>
+          </div>
+          
+          {customQuestions.length > 0 && (
+            <div className="mt-6">
+              <Button
+                onClick={() => handleStartQuiz(true)}
+                size="lg"
+                className="rounded-full bg-accent hover:bg-accent/90 text-lg px-8 py-6 h-auto"
+              >
+                Start with My Questions ({customQuestions.length})
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     );
@@ -243,9 +334,9 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <QuizQuestion
-        question={QUESTIONS[currentQuestion]}
+        question={activeQuestions[currentQuestion]}
         questionNumber={currentQuestion + 1}
-        totalQuestions={QUESTIONS.length}
+        totalQuestions={activeQuestions.length}
         onAnswer={handleAnswer}
         onNext={handleNext}
       />
